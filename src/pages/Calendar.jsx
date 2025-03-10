@@ -9,6 +9,7 @@ import axios from "axios";
 import { FaUserCircle } from "react-icons/fa"; // Ícone de usuário
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./styles/Calendar.css";
+import './styles/EventList.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { jwtDecode } from "jwt-decode";
