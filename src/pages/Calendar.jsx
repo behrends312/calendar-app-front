@@ -118,15 +118,18 @@ const CalendarPage = () => {
         const start = new Date(newEvent.start);
         const end = new Date(newEvent.end);
 
-        // 🔴 Verificar se há sobreposição de eventos
         const isOverlapping = events.some(event => {
+            if (selectedEvent && event._id === selectedEvent._id) {
+                return false;
+            }
+
             const existingStart = new Date(event.start);
             const existingEnd = new Date(event.end);
 
             return (
-                (start >= existingStart && start < existingEnd) || // Começa dentro de outro evento
-                (end > existingStart && end <= existingEnd) || // Termina dentro de outro evento
-                (start <= existingStart && end >= existingEnd) // Engloba outro evento
+                (start >= existingStart && start < existingEnd) ||
+                (end > existingStart && end <= existingEnd) ||
+                (start <= existingStart && end >= existingEnd)
             );
         });
 
@@ -201,6 +204,7 @@ const CalendarPage = () => {
             alert("Erro ao salvar evento!");
         }
     };
+
 
 
     const handleDeleteEvent = async () => {
